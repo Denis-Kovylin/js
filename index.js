@@ -1,63 +1,96 @@
-//----------------------------------------------------------------------
-//-------------------------Triangle ver1--------------------------------
+//-------------------------------------------------------------------------------
+//-------------------------Costume isNaN function--------------------------------
 
-function draw_triangle(triangleHeight, triangleSymbol){  
-    let iterator = 0;
-    let triangleRow = "";
-    while(iterator < triangleHeight){
-        triangleRow += triangleSymbol;
-        console.log(triangleRow);
-        iterator++
-    }
-}
-draw_triangle(5, "*");
+// var valueX = 1488;
+// var valueY = 'ggg';
+// var valueZ = -666;
 
-//----------------------------------------------------------------------
-//-------------------------Triangle ver2--------------------------------
+// function costumeIsNaN(inputValue){
+//     if (typeof(inputValue) === "number" && isFinite(inputValue)){
+//         console.log('Your entered data is: ' + typeof(inputValue) +', and has value: ' + inputValue + '.' );
+//     }
+//     else{
+//         console.log('this is not a Number');       
+//     }
+// }
+// costumeIsNaN(valueX);
+// costumeIsNaN(valueY);
+// costumeIsNaN(valueZ);
 
-function draw_triangle(triangleHeight, triangleSymbol) {
-    let triangleRow = "";
-    for (let iterator = 0; iterator < triangleHeight; iterator++) {
-        triangleRow += triangleSymbol;
-        console.log(triangleRow);
-    }
-}
-draw_triangle(5, "*");
+//-------------------------------------------------------------------------
+//---------------------Costume padEnd\padStart-----------------------------
+
+// var firstString = 'GOTT_MIT_UNS';
+// var secondString = 'TRUE_TILL_DEATH';
+// var anotherString = 'A_PERFECT_CIRCLE';
+
+// var firstCount = 15;
+// var secondCount = 30;
+// var anotherCount = 45;
+
+// var firstSymbol = '*';
+// var secondSymbol = '\'';
+// var anotherSymbol = '~';
+
+// var derectionStart = true;
+// var derectionEnd = false;
+
+// function costumePad(inputString, countPad, symbolPad, derectionPad){
+//     let symbolQuantity = Math.max(0, countPad - inputString.length);
+//     let outputString = inputString;
+
+//     if (derectionPad === true){
+//         for (let itr = 0; itr < symbolQuantity; itr++){
+//             outputString = symbolPad + outputString;
+//         }
+//     } else{
+//         for (let itr = 0; itr < symbolQuantity; itr++){
+//             outputString = outputString + symbolPad;
+//         }      
+//     }
+//     return outputString;
+// }
+// console.log(costumePad(firstString, firstCount, firstSymbol, derectionStart));
+// console.log(costumePad(secondString, secondCount, secondSymbol, derectionEnd));
+// console.log(costumePad(anotherString, anotherCount, anotherSymbol, derectionStart));
 
 //-----------------------------------------------------------------------
-//----------------Sum of numbers not divisible by three------------------
+//-------------------------Check Probability Theory------------------
 
-var sumOfNumbers = 0;
-var numberSwitcher = 0;
+var evenQuantity = 0;
+var allQuantity = 0;
+var oddQuantity = 0;
 
-while (numberSwitcher < 101){
-   if (numberSwitcher % 3 !== 0) {
-    sumOfNumbers += numberSwitcher;
-   }
-   numberSwitcher++;
-   continue;
-}
-console.log(sumOfNumbers);
+var evenPercentage = 0;
+var oddPercentage = 0;
 
-//-----------------------------------------------------------------------
-//-------------------------Function Exponentiation-----------------------
 
-var sum = 1;
 
-function exponentiation(base, exponent) {
-    if (exponent >= 0) {
-        for (let iterator = 1; iterator <= exponent; iterator++) {
-            sum = sum * base;
+function checkProbabilityTheory(count){
+    
+    for(let switcher = 0; switcher < count; switcher++){
+        var randomInt = Math.ceil((Math.random() * 100) * 100);
+        if (randomInt % 2 === 0){
+            evenQuantity++;
+            allQuantity++;
         }
-    } else {
-        for (let iterator = 1; iterator <= -exponent; iterator++) {
-            sum = sum / base;
+        else{
+            oddQuantity++;
+            allQuantity++;
         }
+
+
     }
+    evenPercentage = (evenQuantity / allQuantity * 100).toFixed(1);
+    oddPercentage = (oddQuantity / allQuantity * 100).toFixed(1);
 
-    console.log(sum);
 }
-exponentiation(10, -1);
+checkProbabilityTheory(100);
+
+console.log('Numbers generated: ' + allQuantity);
+console.log('Paired numbers: ' + evenQuantity);
+console.log('Unpaired numbers: ' + oddQuantity);
+console.log('Percentage ratio: ' + oddPercentage + '% ' + 'to ' + evenPercentage + '% (odd to even)' );
 
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
