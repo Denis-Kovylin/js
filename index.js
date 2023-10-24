@@ -31,55 +31,55 @@ objNum1.getInfo();
 //---------------------------------------Barbershop------------------------------------------
 
 
-// var services = {
-// 	cut: '60₴',
-// 	shave: '80₴',
-// 	wash: '100₴',
-//     price: function(){
-//         var total = 0;
-//         for (var service in this){
-//             if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
-//                 total += parseFloat(this[service]);
-//             }       
-//         }
-//         return total;   
-//     },
-//     minPrice: function(){
-//         var minimal = Infinity;
-//         for (var service in this){
-//             if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
-//                 var price = parseFloat(this[service])
-//                     if (price < minimal){
-//                         minimal = price;
-//                 }
-//             }
-//         }
-//         return minimal;
-//     },
-//     maxPrice: function(){
-//         var maximum = -Infinity;
-//         for (var service in this){
-//             if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
-//                 var price = parseFloat(this[service])
-//                 if (price > maximum){
-//                     maximum = price
-//                 }
-//             }
-//         }
-//             return maximum;
-//     }
-// };
+var services = {
+	cut: '60₴',
+	shave: '80₴',
+	wash: '100₴',
+    price: function(){
+        var total = 0;
+        for (var service in this){
+            if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
+                total += parseFloat(this[service]);
+            }       
+        }
+        return total;   
+    },
+    minPrice: function(){
+        var minimal = Infinity;
+        for (var service in this){
+            if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
+                var price = parseFloat(this[service])
+                    if (price < minimal){
+                        minimal = price;
+                }
+            }
+        }
+        return minimal;
+    },
+    maxPrice: function(){
+        var maximum = -Infinity;
+        for (var service in this){
+            if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
+                var price = parseFloat(this[service])
+                if (price > maximum){
+                    maximum = price
+                }
+            }
+        }
+            return maximum;
+    }
+};
 
-// console.log('total cost of services provided: ' + services.price() + '₴');
-// console.log('minimum cost of service: ' + services.minPrice() + '₴')
-// console.log('maximum cost of service: ' + services.maxPrice() + '₴')
-// services.nail = '30₴';
-// services.mustache = '10₴';
-// services.beard = '40₴';
-// services.allIn = '300₴';
-// console.log('total cost of services provided: ' + services.price() + '₴');
-// console.log('minimum cost of service: ' + services.minPrice() + '₴')
-// console.log('maximum cost of service: ' + services.maxPrice() + '₴')
+console.log('total cost of services provided: ' + services.price() + '₴');
+console.log('minimum cost of service: ' + services.minPrice() + '₴')
+console.log('maximum cost of service: ' + services.maxPrice() + '₴')
+services.nail = '30₴';
+services.mustache = '10₴';
+services.beard = '40₴';
+services.allIn = '300₴';
+console.log('total cost of services provided: ' + services.price() + '₴');
+console.log('minimum cost of service: ' + services.minPrice() + '₴')
+console.log('maximum cost of service: ' + services.maxPrice() + '₴')
 
 
 //-------------------------------------------------------------------------------------------
