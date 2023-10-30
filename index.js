@@ -18,7 +18,7 @@ console.log(myBlend(arrayToBlend));
 
 
 //-------------------------------------------------------------------------------------------
-//---------------------------------------Barbershop----------------------------------------KEY
+//---------------------------------------Network Marketing-----------------------------------
 
 const COMPANY = {
     name: 'Big Company',
@@ -95,7 +95,6 @@ function findValueByKey(object, companyName){
     };
     return null;
   };
-
 console.log(findValueByKey(COMPANY, "Client 1.2"));
 
 
