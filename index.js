@@ -3,18 +3,18 @@
 //-----------------------------------Blend array function-------------------------------------
 
 
-// var arrayToBlend = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var arrayToBlend = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// function myBlend(array){
-//     for(var iterator = arrayToBlend.length - 1; iterator > 0; iterator--){
-//         var randomIndex = Math.floor(Math.random() * (iterator + 1));
-//         var tempValue = arrayToBlend[iterator];
-//         arrayToBlend[iterator] = arrayToBlend[randomIndex];
-//         arrayToBlend[randomIndex] = tempValue;
-//     }
-//     return array;
-// };
-// console.log(myBlend(arrayToBlend));
+function myBlend(array){
+    for(var iterator = arrayToBlend.length - 1; iterator > 0; iterator--){
+        var randomIndex = Math.floor(Math.random() * (iterator + 1));
+        var tempValue = arrayToBlend[iterator];
+        arrayToBlend[iterator] = arrayToBlend[randomIndex];
+        arrayToBlend[randomIndex] = tempValue;
+    }
+    return array;
+};
+console.log(myBlend(arrayToBlend));
 
 
 //-------------------------------------------------------------------------------------------
@@ -97,11 +97,6 @@ function findValueByKey(object, companyName){
   };
 
 console.log(findValueByKey(COMPANY, "Client 1.2"));
-
-// const companyName = "Client 1.2";
-// const subCompany = findValueByKey(COMPANY, companyName);
-  
-// console.log(subCompany);
 
 
 //-------------------------------------------------------------------------------------------
