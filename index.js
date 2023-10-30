@@ -84,9 +84,9 @@ function findValueByKey(object, companyName){
         if (Array.isArray(object[KEY])){
           for (const ITEM of object[KEY]){
             if (typeof ITEM === "object"){
-              const DETAILS = findValueByKey(ITEM, companyName);
-              if (DETAILS != undefined){
-                return DETAILS;
+              const DATA = findValueByKey(ITEM, companyName);
+              if (DATA != undefined){
+                return DATA;
               };
             };
           };
