@@ -1,85 +1,107 @@
+"use strict"
 //--------------------------------------------------------------------------------------------
-//-------------------------------------------My object----------------------------------------
+//-----------------------------------Blend array function-------------------------------------
 
 
-var objNum1 = {
-    class: 'Cyborg',
-    type: 'Terminator',
-    model: 'T-888',
-    getInfo: function(){
-        var info = {};
-        for (var key in this){
-            if (typeof this[key] !== 'function'){
-                info[key] = this[key];
-            }
-        }
-        console.log(info);
-    }
-};
+// var arrayToBlend = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-objNum1.getInfo();
-objNum1['development'] = 'Cyberdyne Systems';
-objNum1['operator'] = 'Skynet';
-objNum1['humanity'] = false;
-objNum1['mission'] = 'seek and destroy';
-objNum1['inProgress'] = true;
-objNum1['target'] = [{Name: 'Sarah Connor', status: 'liquidated'}, {Name: 'Kyle Reese', status: 'liquidated'}, {Name: 'John Connor', status: 'searching'}];
-objNum1.getInfo();
+// function myBlend(array){
+//     for(var iterator = arrayToBlend.length - 1; iterator > 0; iterator--){
+//         var randomIndex = Math.floor(Math.random() * (iterator + 1));
+//         var tempValue = arrayToBlend[iterator];
+//         arrayToBlend[iterator] = arrayToBlend[randomIndex];
+//         arrayToBlend[randomIndex] = tempValue;
+//     }
+//     return array;
+// };
+// console.log(myBlend(arrayToBlend));
 
 
 //-------------------------------------------------------------------------------------------
-//---------------------------------------Barbershop------------------------------------------
+//---------------------------------------Barbershop----------------------------------------KEY
 
+const COMPANY = {
+    name: 'Big Company',
+    type:'Main Company',
+    platform: 'Flower Sales Platform',
+    sellsSolution: 'Solution for Selling Flowers',
+    clients: [
+      {
+        name: 'Client 1',
+        type: 'subCompany',
+        uses: 'Software for Selling Flowers',
+        sells: 'Solution for Selling Flowers',
+        partners: [
+          {
+            name: 'Client 1.1',
+            type: 'subSubCompany',
+            uses: 'Solution for Selling Flowers',
+            sells: 'Solution for Selling Flowers',
+          },
+          {
+            name: 'Client 1.2',
+            type: 'subSubCompany',
+            uses: 'Solution for Selling Flowers',
+            sells: 'Solution for Selling Flowers',
+            partners: [
+              {
+                name: 'Client 1.2.3',
+                type: 'subSubCompany',
+                uses: 'Solution for Selling Flowers',
+                sells: 'Solution for Selling Flowers',
+                partners: [
+                    {
+                      name: 'Client 1.2.3.1',
+                      type: 'subSubCompany',
+                      uses: 'Solution for Selling Flowers',
+                      sells: 'Solution for Selling Flowers',  
+                    }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'Client 2',
+        type: 'subCompany',
+        uses: 'Software for Selling Flowers',
+        sells: 'Solution for Selling Flowers'
+      }
+    ]
+  };
 
-// var services = {
-// 	cut: '60₴',
-// 	shave: '80₴',
-// 	wash: '100₴',
-//     price: function(){
-//         var total = 0;
-//         for (var service in this){
-//             if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
-//                 total += parseFloat(this[service]);
-//             }       
-//         }
-//         return total;   
-//     },
-//     minPrice: function(){
-//         var minimal = Infinity;
-//         for (var service in this){
-//             if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
-//                 var price = parseFloat(this[service])
-//                     if (price < minimal){
-//                         minimal = price;
-//                 }
-//             }
-//         }
-//         return minimal;
-//     },
-//     maxPrice: function(){
-//         var maximum = -Infinity;
-//         for (var service in this){
-//             if (this.hasOwnProperty(service) && typeof this[service] !== 'function'){
-//                 var price = parseFloat(this[service])
-//                 if (price > maximum){
-//                     maximum = price
-//                 }
-//             }
-//         }
-//             return maximum;
-//     }
-// };
+function findValueByKey(object, companyName){
+    if (object.name === companyName){
+      return{
+        name: object.name,
+        type: object.type,
+        uses: object.uses,
+        sells: object.sells
+      };
+    } else {
+      for (const KEY in object){
+        if (Array.isArray(object[KEY])){
+          for (const ITEM of object[KEY]){
+            if (typeof ITEM === "object"){
+              const DETAILS = findValueByKey(ITEM, companyName);
+              if (DETAILS != undefined){
+                return DETAILS;
+              };
+            };
+          };
+        };
+      };
+    };
+    return null;
+  };
 
-// console.log('total cost of services provided: ' + services.price() + '₴');
-// console.log('minimum cost of service: ' + services.minPrice() + '₴')
-// console.log('maximum cost of service: ' + services.maxPrice() + '₴')
-// services.nail = '30₴';
-// services.mustache = '10₴';
-// services.beard = '40₴';
-// services.allIn = '300₴';
-// console.log('total cost of services provided: ' + services.price() + '₴');
-// console.log('minimum cost of service: ' + services.minPrice() + '₴')
-// console.log('maximum cost of service: ' + services.maxPrice() + '₴')
+console.log(findValueByKey(COMPANY, "Client 1.2"));
+
+// const companyName = "Client 1.2";
+// const subCompany = findValueByKey(COMPANY, companyName);
+  
+// console.log(subCompany);
 
 
 //-------------------------------------------------------------------------------------------
