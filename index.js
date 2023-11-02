@@ -1,108 +1,95 @@
 "use strict"
-//--------------------------------------------------------------------------------------------
-//-----------------------------------Blend array function-------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------Regular expression---------------------------------------------------------------------------
 
 
-// var arrayToBlend = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var firstString = 'Per aspera ad astra';
+var secondString = 'Si vis pacem - para bellum';
+var regularExpression = /[^Aa]{6,}/;
 
-// function myBlend(array){
-//     for(var iterator = arrayToBlend.length - 1; iterator > 0; iterator--){
-//         var randomIndex = Math.floor(Math.random() * (iterator + 1));
-//         var tempValue = arrayToBlend[iterator];
-//         arrayToBlend[iterator] = arrayToBlend[randomIndex];
-//         arrayToBlend[randomIndex] = tempValue;
-//     }
-//     return array;
-// };
-// console.log(myBlend(arrayToBlend));
+function stringSearcher(string) {
+  const MATCH = string.match(regularExpression);
+  return MATCH ? MATCH[0] : 'status: 404';
+};
+console.log(stringSearcher(firstString));
+console.log(stringSearcher(secondString));
 
 
-//-------------------------------------------------------------------------------------------
-//---------------------------------------Barbershop----------------------------------------KEY
-
-const COMPANY = {
-    name: 'Big Company',
-    type:'Main Company',
-    platform: 'Flower Sales Platform',
-    sellsSolution: 'Solution for Selling Flowers',
-    clients: [
-      {
-        name: 'Client 1',
-        type: 'subCompany',
-        uses: 'Software for Selling Flowers',
-        sells: 'Solution for Selling Flowers',
-        partners: [
-          {
-            name: 'Client 1.1',
-            type: 'subSubCompany',
-            uses: 'Solution for Selling Flowers',
-            sells: 'Solution for Selling Flowers',
-          },
-          {
-            name: 'Client 1.2',
-            type: 'subSubCompany',
-            uses: 'Solution for Selling Flowers',
-            sells: 'Solution for Selling Flowers',
-            partners: [
-              {
-                name: 'Client 1.2.3',
-                type: 'subSubCompany',
-                uses: 'Solution for Selling Flowers',
-                sells: 'Solution for Selling Flowers',
-                partners: [
-                    {
-                      name: 'Client 1.2.3.1',
-                      type: 'subSubCompany',
-                      uses: 'Solution for Selling Flowers',
-                      sells: 'Solution for Selling Flowers',  
-                    }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: 'Client 2',
-        type: 'subCompany',
-        uses: 'Software for Selling Flowers',
-        sells: 'Solution for Selling Flowers'
-      }
-    ]
-  };
-
-function findValueByKey(object, companyName){
-    if (object.name === companyName){
-      return{
-        name: object.name,
-        type: object.type,
-        uses: object.uses,
-        sells: object.sells
-      };
-    } else {
-      for (const KEY in object){
-        if (Array.isArray(object[KEY])){
-          for (const ITEM of object[KEY]){
-            if (typeof ITEM === "object"){
-              const DETAILS = findValueByKey(ITEM, companyName);
-              if (DETAILS != undefined){
-                return DETAILS;
-              };
-            };
-          };
-        };
-      };
-    };
-    return null;
-  };
-
-console.log(findValueByKey(COMPANY, "Client 1.2"));
-
-// const companyName = "Client 1.2";
-// const subCompany = findValueByKey(COMPANY, companyName);
-  
-// console.log(subCompany);
+//---------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------Email validation------------------------------------------------------------------------------
 
 
-//-------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------
+var usersDataBase = [
+  {
+    id: "1",
+    userName: "Nikola",
+    lastName: "Tesla",
+    email: "n.tesla@gmail.com",
+  },
+  {
+    id: "2",
+    userName: "Dmitro",
+    lastName: "Porohov",
+    email: "dmitro.porohov@yahoo.com",
+  },
+  {
+    id: "3",
+    userName: "test",
+    lastName: "test",
+    email: "andrii@mail.ru",
+  },
+  {
+    id: "4",
+    userName: "Anton",
+    lastName: "Slepakov",
+    email: "test.test@gmail.com",
+  },
+  {
+    id: "5",
+    userName: "test",
+    lastName: "test",
+    email: ".test@gmail.com",
+  },
+  {
+    id: "6",
+    userName: "test",
+    lastName: "test",
+    email: "111.test@gmail..com",
+  },
+  {
+    id: "7",
+    userName: "test",
+    lastName: "test",
+    email: "test.testgmail.com",
+  },
+  {
+    id: "8",
+    userName: "Boris",
+    lastName: "Johnson",
+    email: "test.test@gmail.com",
+  },
+  {
+    id: "9",
+    userName: "test",
+    lastName: "test",
+    email: "test.test@gmailcom",
+  },
+  {
+    id: "10",
+    userName: "test",
+    lastName: "test",
+    email: "test..test@gmail.com",
+  },
+];
+
+function emailValidation(){
+  const EMAIL_REGULAR_EXPRESSION = /^[A-Za-z0-9]+\.?[A-Za-z0-9]*@(gmail|yahoo)\.com$/;
+  const FILTRED_USERS_DATABASE = usersDataBase.filter(usersDataBase => EMAIL_REGULAR_EXPRESSION.test(usersDataBase.email));
+  return FILTRED_USERS_DATABASE;
+};
+console.log(usersDataBase);
+console.log(emailValidation(usersDataBase));
+
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
